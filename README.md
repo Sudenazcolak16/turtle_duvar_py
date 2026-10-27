@@ -1,19 +1,41 @@
-# Duvardan Kaçan Kaplumbağa (ROS 2 Python)
+# 🐢 ROS 2 Duvardan Kaçan Kaplumbağa
 
-Bu proje, ROS 2 üzerinde `turtlesim` simülasyonunu kullanarak kaplumbağanın belirlenen sınırlara çarpmadan duvardan kaçmasını sağlayan bir kontrol düğümüdür.
-
-## Özellikler
-- `/turtle1/pose` konusuna abone olarak anlık $X$ ve $Y$ koordinatlarını dinler.
-- Kaplumbağa sınırlara ($X, Y \le 1.5$ veya $X, Y \ge 9.5$) yaklaştığında yönünü merkeze çevirerek duvardan kaçar.
-- `/turtle1/cmd_vel` konusuna hız ve açısal dönüş mesajları yayınlar.
-- Saniyede bir `get_logger().info()` ile anlık konum ve parametre bilgilerini yazdırır.
-- Hız ve sınır değerleri dinamik ROS 2 parametresi olarak tanımlanmıştır (Bonus).
+Bu proje, ROS 2 ortamında `turtlesim` simülasyonunu kullanarak kaplumbağanın duvar sınırlarına çarpmadan hareket etmesini sağlayan kontrol düğümüdür.
 
 ---
 
-## Kurulum ve Çalıştırma
+## 1. Düğüm İlişkileri (Rqt Graph)
+![Rqt Graph](rqt_graph.png)
 
-Çalışma alanınızı derleyin ve ortamı kaynak olarak ekleyin:
+---
+
+## 2. Konum Verileri (/turtle1/pose)
+Kaplumbağanın anlık konum ve yönelim bilgileri dinlenir:
+![Pose Çıktısı](pose_ciktisi.png)
+
+---
+
+## 3. Duvar Kontrolü ve Terminal Logları
+`get_logger().info()` ile yazdırılan anlık konum ve sınır kontrol logları:
+![Duvar Çalışması](duvar_calismasi.png)
+
+---
+
+## 4. Turtlesim Simülasyon Hareketi
+Kaplumbağanın sınırlara ulaştığında dönerek alan içinde kalışı:
+![Simülasyon Hareketi](hareket.png)
+
+---
+
+## 5. Hız Komutları (/turtle1/cmd_vel)
+Kaplumbağaya iletilen `geometry_msgs/msg/Twist` mesajları:
+![Cmd Vel Çıktısı](cmd_vel_ciktisi.png)
+
+---
+
+## 🚀 Kurulum ve Çalıştırma
+
+Projeyi kendi ROS 2 çalışma alanınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
 
 ```bash
 cd ~/ros2_ws
